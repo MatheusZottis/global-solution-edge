@@ -1,0 +1,66 @@
+// Define os pinos do potenciômetro, dos LEDs e do buzzer
+int potenciometroPin = A0;        
+int ledVerdePin = 13;       
+int ledAmareloPin = 12;     
+int ledVermelhoPin = 11;    
+int buzzerPin = 10;   
+
+void setup() {
+  // Inicializa a comunicação serial
+  Serial.begin(9600);
+
+  // Define os LEDs e o buzzer como saídas
+  pinMode(ledVerdePin, OUTPUT);
+  pinMode(ledAmareloPin, OUTPUT);
+  pinMode(ledVermelhoPin, OUTPUT);
+  pinMode(buzzerPin, OUTPUT);
+}
+
+void loop() {
+  // Lê os valores do potenciômetro
+  int potValue = analogRead(potenciometroPin);
+  
+  // Mapeia os valores do potenciômetro para o intervalo de 50 a 200 bpm
+  int bpm = map(potValue, 0, 1023, 50, 200);
+  
+  // Exibe os valores lidos no monitor serial
+  Serial.print("Batimentos Cardíacos: ");
+  Serial.println(bpm);
+  
+  // Verifica as condições e aciona os LEDs e o buzzer com base nas leituras do potenciômetro
+  if (bpm < 90) {
+    digitalWrite(ledVerdePin, HIGH);    
+    digitalWrite(ledAmareloPin, LOW);   
+    digitalWrite(ledVermelhoPin, LOW);  
+    noTone(buzzerPin); 
+  } 
+  else if (bpm > 90 && bpm <= 120) {
+    digitalWrite(ledVerdePin, LOW);     
+    digitalWrite(ledAmareloPin, HIGH);   
+    digitalWrite(ledVermelhoPin, LOW); 
+    digitalWrite(buzzerPin, HIGH);
+
+    // Verifica o tempo para tocar o buzzer a cada 3 segundos
+    static unsigned long previousMillis = 0;
+    const unsigned long interval = 3000;
+    unsigned long currentMillis = millis();
+
+    if (currentMillis - previousMillis >= interval) {
+      digitalWrite(buzzerPin, HIGH);
+      tone(buzzerPin, 100);
+      delay(100); // Mantém o som do buzzer por um curto período de tempo
+      noTone(buzzerPin); // Desliga o buzzer
+      previousMillis = currentMillis;
+    }
+  } 
+  else {
+    digitalWrite(ledVerdePin, LOW);     
+    digitalWrite(ledAmareloPin, LOW);   
+    digitalWrite(ledVermelhoPin, HIGH); 
+    digitalWrite(buzzerPin, HIGH);
+    tone(buzzerPin, 250);
+  }
+
+  // Aguarda um curto período de tempo antes da próxima leitura
+  delay(1000);
+}
