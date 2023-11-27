@@ -1,1 +1,9 @@
-# global-solution-edge
+# SafeSync Guardian: Monitoramento Avançado para Epilepsia - Projeto Tinkercad
+
+O SafeSync Guardian emerge como uma inovação crucial no campo da saúde, visando monitorar e prevenir complicações durante crises epilépticas. O projeto, centrado em um colete de monitoramento, tem como objetivo primordial alertar antecipadamente os usuários e seus familiares sobre a iminência de um episódio epiléptico, permitindo a rápida adoção de medidas adequadas e, assim, criando um ambiente mais seguro e eliminando surpresas indesejadas.
+
+Concebido com a missão de proporcionar um cotidiano mais sereno para pessoas com epilepsia e seus familiares, o SafeSync Guardian adota uma abordagem simplificada. O colete, fabricado com material fino em contato direto com a pele, é desenhado para ser discretamente utilizado sob a roupa, evitando desconforto visual e oferecendo uma solução eficaz para todas as idades, especialmente quando a pessoa afetada é uma criança.
+
+Para executar o projeto no tinkercad basta acessar o link deixado abaixo do ReadMe, nele você encontrará um projeto simples com um potenciômetro que simula os batimentos cardíacos de uma pessoa, já que o site não conta com um sensor de eletrocardiograma. Assim que a simulação do projeto for iniciada, basta girar o potenciômetro inteiramente para a direita e, aos poucos, ir girando para a esquerda para assim controlar os batimentos. De 50 a 90 bpm, o led verde ficará aceso para indicar que está tudo certo, ao passar dos 90 bpm até atingir no máximo 120 bpm, o led amarelo acenderá junto de um buzzer que apita pausadamente para indicar que há um possível início de uma crise epiléptica, e por fim, ao passar dos 120 bpm, o led vermelho se acende junto de um buzzer fazendo um barulho constante para indicar um sinal de alerta de ataque.
+
+https://www.tinkercad.com/things/8F2ua41hqKo-global-edge/editel 
